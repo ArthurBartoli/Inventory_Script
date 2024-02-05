@@ -1,7 +1,7 @@
 '''
 The workflow is in 3 steps :
     1. Run a script to export a json of the tenant
-    2. Unwrap the json and drill down the content while storing it in variables
+    2. Unwrap the json and drill down the content while sorting it
         * One dict for each workspace, report, user and dataset
         * One dict of many nested dicts that keeps track of the mining
     3. Organise this data into seperate excel sheets and name it accordingly
@@ -15,6 +15,8 @@ import time
 import json
 import win32com.client as win32
 from pprint import pprint
+
+from toolbox.workspace_search import scan_export                                       
 
 # Defining paths
 script_directory = os.path.dirname(os.path.abspath(__file__))
@@ -34,189 +36,7 @@ with open(file_path, 'r', encoding='utf-16') as json1_file:
     json_str = json1_file.read()
     json_data = json.loads(json_str)
 
-
-# Set the result storage
-keys = ["search", "reports", "workspaces", "datasets", "users", "dataflows", "dashboards"]
-res_final = {k: {"PersonalWorkspace": {}, "SharedWorkspace": {}} for k in keys}
-
-
-
-### Search the workspaces
-for t in range(len(json_data)):
-    workspaceId = str(json_data[t]["Id"])
-    workspaceName = str(json_data[t]["Name"])
-    
-    # The workspace that is being searched is a personal workspace
-    if "PersonalWorkspace" in workspaceName or "My workspace" in workspaceName:
-        
-        res_final["workspaces"]["PersonalWorkspace"][workspaceId] = {'workspaceName': workspaceName}
-        res_final["search"]["PersonalWorkspace"][workspaceId] = {'workspaceName': workspaceName}
-        
-        # Set data for browsing
-        keys = ["Reports", "Dashboards", "Datasets", "Users", "Dataflows"]
-        data = {key: json_data[t][key] for key in keys}
-        
-        res_final["search"]["PersonalWorkspace"][workspaceId]["reports"] = {}
-        ## We search through the reports
-        if data["Reports"]:
-            for report in data["Reports"]:
-                
-                
-                
-                # We keep the name for the entry
-                tmpName = report["Id"]
-                del report["Id"]
-                
-                # We create an entry for each report
-                res_final["search"]["PersonalWorkspace"][workspaceId]["reports"][tmpName] = report
-                if tmpName not in res_final["reports"]["PersonalWorkspace"]:
-                    res_final["reports"]["PersonalWorkspace"][tmpName] = report
-        
-        
-        res_final["search"]["PersonalWorkspace"][workspaceId]["dashboards"] = {}
-        ## We search through the dashboards
-        if data["Dashboards"]:
-            for dashboard in data["Dashboards"]:
-                
-                # We keep the name for the entry
-                tmpName = dashboard["Id"]
-                del dashboard["Id"]
-                
-                # We create an entry for each report
-                res_final["search"]["PersonalWorkspace"][workspaceId]["dashboards"][tmpName] = dashboard
-                if tmpName not in res_final["dashboards"]["PersonalWorkspace"]:
-                    res_final["dashboards"]["PersonalWorkspace"][tmpName] = dashboard
-        
-        
-        res_final["search"]["PersonalWorkspace"][workspaceId]["datasets"] = {}
-        ## We search through the datasets
-        if data["Datasets"]:
-            for dataset in data["Datasets"]:
-                
-                # We keep the name for the entry
-                tmpName = dataset["Id"]
-                del dataset["Id"]
-                
-                # We create an entry for each report
-                res_final["search"]["PersonalWorkspace"][workspaceId]["datasets"][tmpName] = dataset
-                if tmpName not in res_final["datasets"]["PersonalWorkspace"]:
-                    res_final["datasets"]["PersonalWorkspace"][tmpName] = dataset
-            
-        
-        res_final["search"]["PersonalWorkspace"][workspaceId]["users"] = {}
-        ## We search through the users
-        if data["Users"] :
-            for user in data["Users"]:
-                
-                # We keep the name for the entry
-                tmpName = user["UserPrincipalName"]
-                del user["UserPrincipalName"]
-                
-                # We create an entry for each report
-                res_final["search"]["PersonalWorkspace"][workspaceId]["users"][tmpName] = user
-                if tmpName not in res_final["users"]["PersonalWorkspace"]:
-                    del user["AccessRight"]
-                    res_final["users"]["PersonalWorkspace"][tmpName] = user
-            
-            
-        res_final["search"]["PersonalWorkspace"][workspaceId]["dataflows"] = {}
-        ## We search through the dataflows
-        if data["Dataflows"] :
-            for dataflow in data["Dataflows"]:
-                
-                # We keep the name for the entry
-                tmpName = dataflow["Id"]
-                del dataflow["Id"]
-                
-                # We create an entry for each report
-                res_final["search"]["PersonalWorkspace"][workspaceId]["dataflows"][tmpName] = dataflow
-                if tmpName not in res_final["dataflows"]["PersonalWorkspace"]:
-                    res_final["dataflows"]["PersonalWorkspace"][tmpName] = dataflow
-                    
-            
-    # The workspace that is being searched is a shared workspace
-    else: 
-        res_final["workspaces"]["SharedWorkspace"][workspaceId] = {'workspaceName': workspaceName}
-        res_final["search"]["SharedWorkspace"][workspaceId] = {'workspaceName': workspaceName}
-        
-        # Set data for browsing
-        keys = ["Reports", "Dashboards", "Datasets", "Users", "Dataflows"]
-        data = {key: json_data[t][key] for key in keys}
-        
-        res_final["search"]["SharedWorkspace"][workspaceId]["reports"] = {}
-        ## We search through the reports
-        if data["Reports"]:
-            for report in data["Reports"]:
-                
-                # We keep the name for the entry
-                tmpName = report["Id"]
-                del report["Id"]
-                
-                # We create an entry for each report
-                res_final["search"]["SharedWorkspace"][workspaceId]["reports"][tmpName] = report
-                if tmpName not in res_final["reports"]["SharedWorkspace"]:
-                    res_final["reports"]["SharedWorkspace"][tmpName] = report
-        
-        
-        res_final["search"]["SharedWorkspace"][workspaceId]["dashboards"] = {}
-        ## We search through the dashboards
-        if data["Dashboards"]:
-            for dashboard in data["Dashboards"]:
-                
-                # We keep the name for the entry
-                tmpName = dashboard["Id"]
-                del dashboard["Id"]
-                
-                # We create an entry for each report
-                res_final["search"]["SharedWorkspace"][workspaceId]["dashboards"][tmpName] = dashboard
-                if tmpName not in res_final["dashboards"]["SharedWorkspace"]:
-                    res_final["dashboards"]["SharedWorkspace"][tmpName] = dashboard
-        
-        
-        res_final["search"]["SharedWorkspace"][workspaceId]["datasets"] = {}
-        ## We search through the datasets
-        if data["Datasets"]:
-            for dataset in data["Datasets"]:
-                
-                # We keep the name for the entry
-                tmpName = dataset["Id"]
-                del dataset["Id"]
-                
-                # We create an entry for each report
-                res_final["search"]["SharedWorkspace"][workspaceId]["datasets"][tmpName] = dataset
-                if tmpName not in res_final["datasets"]["SharedWorkspace"]:
-                    res_final["datasets"]["SharedWorkspace"][tmpName] = dataset
-            
-        
-        res_final["search"]["SharedWorkspace"][workspaceId]["users"] = {}
-        ## We search through the users
-        if data["Users"] :
-            for user in data["Users"]:
-                
-                # We keep the name for the entry
-                tmpName = user["UserPrincipalName"]
-                del user["UserPrincipalName"]
-                
-                # We create an entry for each report
-                res_final["search"]["SharedWorkspace"][workspaceId]["users"][tmpName] = user
-                if tmpName not in res_final["users"]["SharedWorkspace"]:
-                    del user["AccessRight"]
-                    res_final["users"]["SharedWorkspace"][tmpName] = user
-            
-            
-        res_final["search"]["SharedWorkspace"][workspaceId]["dataflows"] = {}
-        ## We search through the dataflows
-        if data["Dataflows"] :
-            for dataflow in data["Dataflows"]:
-                
-                # We keep the name for the entry
-                tmpName = dataflow["Id"]
-                del dataflow["Id"]
-                
-                # We create an entry for each report
-                res_final["search"]["SharedWorkspace"][workspaceId]["dataflows"][tmpName] = dataflow
-                if tmpName not in res_final["dataflows"]["SharedWorkspace"]:
-                    res_final["dataflows"]["SharedWorkspace"][tmpName] = dataflow
+res_final = scan_export(json_data)
 
 
 ## Formatting the excel sheet

@@ -1,7 +1,9 @@
+## Just in case
+
 Import-Module MicrosoftPowerBIMgmt
 Login-PowerBI
 
 $headers = Get-PowerBIAccessToken
 $token = $headers.Authorization
 
-echo $token
+Write-Output $token
