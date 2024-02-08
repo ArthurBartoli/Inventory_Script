@@ -10,6 +10,7 @@ __pycache__/
 export/
 export.json
 DatasourceAndGateway.json
+*/*.xlsx
 
 # Distribution / packaging
 .Python
