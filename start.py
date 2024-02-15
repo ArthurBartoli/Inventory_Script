@@ -42,6 +42,7 @@ for arg in list_args:
             print("\t* --export|-e [Y]es|[N]o")
             print("\t\tWhether or not to run the powershell script which exports all data")
             print("\t\tfrom tenant. If the export is already done once, it is not necessary.")
+            exit()
         case "no arguments":
             pass
         case _:
