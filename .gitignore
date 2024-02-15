@@ -12,6 +12,9 @@ export.json
 DatasourceAndGateway.json
 */*.xlsx
 
+# Personal test file
+test.py
+
 # Distribution / packaging
 .Python
 build/
