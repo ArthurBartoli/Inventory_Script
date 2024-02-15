@@ -23,7 +23,7 @@ file_path = os.path.join(script_directory, "json_extract.ps1")
 export_directory = os.path.join(script_directory, "export")
 export_path = os.path.join(script_directory, 'export.json')
 
-run_powershell_script(file_path)
+#run_powershell_script(file_path)
     
 json_data = unwrap_json(export_path)
 res_final = scan_export(json_data)

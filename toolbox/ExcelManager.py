@@ -2,6 +2,7 @@ import win32com.client as win32
 import os
 
 from toolbox.safe_write_to_excel import safe_write_to_excel
+from toolbox.safe_write_to_excel import data_writing_to_excel
 from toolbox.unwrap_json import unwrap_json
 
 class ExcelManager:
@@ -44,9 +45,8 @@ class ExcelManager:
         data[1].extend(len(self.export_data[key]["PersonalWorkspace"].keys()) for key in headers[1:])
         data[2].extend(len(self.export_data[key]["SharedWorkspace"].keys()) for key in headers[1:])
 
-        for i, row in enumerate(data, start=1):  # Using start=1 to match Excel's 1-based indexing
-            for j, value in enumerate(row, start=1):
-                safe_write_to_excel(sheet, i, j, value)
+        # Write table
+        data_writing_to_excel(sheet, data)
 
         # Create table
         table_range = sheet.Range(sheet.Cells(1, 1), sheet.Cells(len(data), len(data[0])))
@@ -80,9 +80,7 @@ class ExcelManager:
             data.append(process_dataset(json_data))
 
         # Write table
-        for i, row in enumerate(data, start=1):  # Using start=1 to match Excel's 1-based indexing
-            for j, value in enumerate(row, start=1):
-                safe_write_to_excel(sheet2, i, j, value)
+        data_writing_to_excel(sheet2, data)
 
         # Create Excel table from the data range
         table_range = sheet2.Range(sheet2.Cells(1, 1), sheet2.Cells(len(data), len(header)))
@@ -119,9 +117,7 @@ class ExcelManager:
                 data.append(row)
         
         # Write table
-        for i, row in enumerate(data, start=1):  # Using start=1 to match Excel's 1-based indexing
-            for j, value in enumerate(row, start=1):
-                safe_write_to_excel(sheet3, i, j, value)
+        data_writing_to_excel(sheet3, data)
 
         # Create table
         table_range = sheet3.Range(sheet3.Cells(1, 1), sheet3.Cells(len(data), len(header)))
@@ -204,9 +200,7 @@ class ExcelManager:
         data.extend([[k, v["Name"], v["IsOnPremGatewayRequired"]] for k, v in datasets.items()])
 
         # Write table
-        for i, row in enumerate(data, start=1): # Using start=1 to match Excel's 1-based indexing
-            for j, value in enumerate(row, start=1):
-                safe_write_to_excel(sheet5, i, j, value)
+        data_writing_to_excel(sheet5, data)
 
         # Create table
         table_range = sheet5.Range(sheet5.Cells(1, 1), sheet5.Cells(len(data), len(data[0])))
@@ -228,9 +222,7 @@ class ExcelManager:
         data.extend([[k, v["Name"]] for k, v in reports.items()])
 
         # Write table
-        for i, row in enumerate(data, start=1): # Using start=1 to match Excel's 1-based indexing
-            for j, value in enumerate(row, start=1):
-                safe_write_to_excel(sheet6, i, j, value)
+        data_writing_to_excel(sheet6, data)
 
         # Create table
         table_range = sheet6.Range(sheet6.Cells(1, 1), sheet6.Cells(len(data), len(data[0])))
@@ -242,7 +234,3 @@ class ExcelManager:
 
         self.workbook.SaveAs(os.path.join(self.export_directory, country_initials + '_inventory.xlsx'))
         self.excel_app.Quit()
-
-
-
-                    
