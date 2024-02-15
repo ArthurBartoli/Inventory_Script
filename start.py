@@ -21,10 +21,11 @@ from toolbox.unwrap_json import unwrap_json
 all_args = sys.argv[1:] # We skip the first argument which is the file name
 n = 2
 list_args = [all_args[i * n:(i + 1) * n] for i in range((len(all_args) + n - 1) // n )]  
-print(list_args)
 
-ps_bool = False
+# If the list of arguments is empty, we enter a dummy one
+if not all_args: list_args = ["no arguments"]
 
+export_bool = False
 for arg in list_args:
     match arg[0]:
         # Does the script need to run the data export ?
@@ -41,7 +42,7 @@ for arg in list_args:
             print("\t\tWhether or not to run the powershell script which exports all data")
             print("\t\tfrom tenant. If the export is already done once, it is not necessary.")
         case _:
-            print("Please enter a valid option.")
+            print("## Could not recognise the argument, please enter a valid option. ##")
                             
 # Defining paths
 script_directory = os.path.dirname(os.path.abspath(__file__))
