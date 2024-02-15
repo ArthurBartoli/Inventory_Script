@@ -34,6 +34,12 @@ for arg in list_args:
                 pass
             else:
                 export_bool = (arg[1] == "y" or arg[1] == "yes")
+        case "--help" | "-h":
+            print("You have entered the help command, all further commands are ignored.")
+            print("Here is a list of available options :")
+            print("\t* --export|-e [Y]es|[N]o")
+            print("\t\tWhether or not to run the powershell script which exports all data")
+            print("\t\tfrom tenant. If the export is already done once, it is not necessary.")
         case _:
             print("Please enter a valid option.")
                             
