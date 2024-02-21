@@ -23,10 +23,10 @@ n = 2
 list_args = [all_args[i * n:(i + 1) * n] for i in range((len(all_args) + n - 1) // n )]  
 
 # If the list of arguments is empty, we enter a dummy one
-if not all_args: list_args = ["no arguments"]
+if not all_args: list_args = [["no arguments"]]
 
 print(list_args)
-export_bool = False
+export_bool = True
 for arg in list_args:
     match arg[0]:
         case '--export' | "-e": # Does the script need to run the data export ?
