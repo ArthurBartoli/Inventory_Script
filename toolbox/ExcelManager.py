@@ -4,6 +4,7 @@ import os
 from toolbox.safe_write_to_excel import safe_write_to_excel
 from toolbox.safe_write_to_excel import data_writing_to_excel
 from toolbox.unwrap_json import unwrap_json
+from toolbox.date_reader import date_reader, closest_date
 
 class ExcelManager:
     '''Generates the data from the export and files it in an excel using its API'''
@@ -97,7 +98,7 @@ class ExcelManager:
         sheet3.Name = "Personal workspaces"  
 
         # Build data structure
-        header = ["UPN", "# Dashboards", "# Reports", "# Datasets", "Workspace Name"]
+        header = ["UPN", "# Dashboards", "# Reports", "# Datasets", "Workspace Name", "Data of last modification"]
         data = [header]
 
         # Access personal workspaces data
@@ -107,12 +108,22 @@ class ExcelManager:
         for workspace in personal_workspaces.values():
             if any(workspace[key] for key in ["reports", "dashboards", "datasets"]):
                 upn = next(iter(workspace['users'].keys()), "NO UPN AVAILABLE") # Yes, sometimes the API returns no users...
+                
+                try:
+                    allCreatedDate = []
+                    for dataset in workspace["datasets"].values():
+                        allCreatedDate.append(date_reader(dataset["CreatedDate"]))
+                    lastCreationDate = closest_date(allCreatedDate)
+                except ValueError:
+                    lastCreationDate = "NA"
+                
                 row = [
                     upn,
                     len(workspace["dashboards"]),
                     len(workspace["reports"]),
                     len(workspace["datasets"]),
-                    workspace["workspaceName"]
+                    workspace["workspaceName"],
+                    lastCreationDate
                 ]
                 data.append(row)
         
