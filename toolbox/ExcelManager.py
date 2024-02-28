@@ -175,7 +175,15 @@ class ExcelManager:
             for item in ["reports", "datasets", "dataflows"]:
                 safe_write_to_excel(sheet4, current_row, 1, f"{len(workspace[item])} {item}")
                 current_row += 1
-
+                
+            # Date of last creation
+            try:
+                last_creation = read_closest_date(workspace["datasets"])
+            except ValueError:
+                last_creation = "NA"
+            safe_write_to_excel(sheet4, current_row, 1, f"Date of last creation in this workspace is {last_creation}")
+            current_row += 1
+            
             # Additional space after each workspace's details
             current_row += 1
 
