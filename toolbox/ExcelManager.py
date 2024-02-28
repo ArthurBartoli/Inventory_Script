@@ -98,7 +98,7 @@ class ExcelManager:
         sheet3.Name = "Personal workspaces"  
 
         # Build data structure
-        header = ["UPN", "# Dashboards", "# Reports", "# Datasets", "Workspace Name", "Data of last modification"]
+        header = ["UPN", "# Dashboards", "# Reports", "# Datasets", "Workspace Name", "Date of last modification", "UPN suffix"]
         data = [header]
 
         # Access personal workspaces data
@@ -123,7 +123,8 @@ class ExcelManager:
                     len(workspace["reports"]),
                     len(workspace["datasets"]),
                     workspace["workspaceName"],
-                    lastCreationDate
+                    lastCreationDate,
+                    upn.split('.')[-1]
                 ]
                 data.append(row)
         
