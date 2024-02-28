@@ -4,6 +4,7 @@ import os
 from toolbox.safe_write_to_excel import safe_write_to_excel
 from toolbox.safe_write_to_excel import data_writing_to_excel
 from toolbox.unwrap_json import unwrap_json
+from toolbox.date_reader import read_closest_date
 
 class ExcelManager:
     '''Generates the data from the export and files it in an excel using its API'''
@@ -97,7 +98,7 @@ class ExcelManager:
         sheet3.Name = "Personal workspaces"  
 
         # Build data structure
-        header = ["UPN", "# Dashboards", "# Reports", "# Datasets", "Workspace Name"]
+        header = ["UPN", "# Dashboards", "# Reports", "# Datasets", "Workspace Name", "Date of last modification", "UPN suffix"]
         data = [header]
 
         # Access personal workspaces data
@@ -107,12 +108,20 @@ class ExcelManager:
         for workspace in personal_workspaces.values():
             if any(workspace[key] for key in ["reports", "dashboards", "datasets"]):
                 upn = next(iter(workspace['users'].keys()), "NO UPN AVAILABLE") # Yes, sometimes the API returns no users...
+                
+                try:
+                    lastCreationDate = read_closest_date(workspace["datasets"])
+                except ValueError:
+                    lastCreationDate = "NA"
+                
                 row = [
                     upn,
                     len(workspace["dashboards"]),
                     len(workspace["reports"]),
                     len(workspace["datasets"]),
-                    workspace["workspaceName"]
+                    workspace["workspaceName"],
+                    lastCreationDate,
+                    upn.split('.')[-1]
                 ]
                 data.append(row)
         
@@ -166,7 +175,15 @@ class ExcelManager:
             for item in ["reports", "datasets", "dataflows"]:
                 safe_write_to_excel(sheet4, current_row, 1, f"{len(workspace[item])} {item}")
                 current_row += 1
-
+                
+            # Date of last creation
+            try:
+                last_creation = read_closest_date(workspace["datasets"])
+            except ValueError:
+                last_creation = "NA"
+            safe_write_to_excel(sheet4, current_row, 1, f"Date of last creation in this workspace is {last_creation}")
+            current_row += 1
+            
             # Additional space after each workspace's details
             current_row += 1
 
