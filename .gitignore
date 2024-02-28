@@ -8,6 +8,7 @@ __pycache__/
 
 # Exports
 export/
+json_export/
 export.json
 DatasourceAndGateway.json
 */*.xlsx
