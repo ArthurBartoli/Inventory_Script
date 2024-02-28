@@ -4,7 +4,7 @@ import os
 from toolbox.safe_write_to_excel import safe_write_to_excel
 from toolbox.safe_write_to_excel import data_writing_to_excel
 from toolbox.unwrap_json import unwrap_json
-from toolbox.date_reader import date_reader, closest_date
+from toolbox.date_reader import read_closest_date
 
 class ExcelManager:
     '''Generates the data from the export and files it in an excel using its API'''
@@ -110,10 +110,7 @@ class ExcelManager:
                 upn = next(iter(workspace['users'].keys()), "NO UPN AVAILABLE") # Yes, sometimes the API returns no users...
                 
                 try:
-                    allCreatedDate = []
-                    for dataset in workspace["datasets"].values():
-                        allCreatedDate.append(date_reader(dataset["CreatedDate"]))
-                    lastCreationDate = closest_date(allCreatedDate)
+                    lastCreationDate = read_closest_date(workspace["datasets"])
                 except ValueError:
                     lastCreationDate = "NA"
                 
