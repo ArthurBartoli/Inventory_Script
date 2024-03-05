@@ -5,6 +5,7 @@ from toolbox.safe_write_to_excel import safe_write_to_excel
 from toolbox.safe_write_to_excel import data_writing_to_excel
 from toolbox.unwrap_json import unwrap_json
 from toolbox.date_reader import read_closest_date
+from toolbox.sharepoint_url_pruning import sharepoint_url_pruning
 
 class ExcelManager:
     '''Generates the data from the export and files it in an excel using its API'''
@@ -87,6 +88,42 @@ class ExcelManager:
         table_range = sheet2.Range(sheet2.Cells(1, 1), sheet2.Cells(len(data), len(header)))
         table = sheet2.ListObjects.Add(SourceType=win32.constants.xlSrcRange, Source=table_range, XlListObjectHasHeaders=win32.constants.xlYes)
         
+    def sharepoint_websites(self):
+        ## Datasets and their sources/gateway
+        sheet2 = self.workbook.Worksheets.Add(After=self.workbook.Worksheets(self.workbook.Worksheets.Count))
+        sheet2.Name = "Sharepoint Websites"  
+
+        file_path = os.path.join(self.script_directory, 'DatasourceAndGateway.json')
+        json_data = unwrap_json(file_path)
+        
+        # Creating data structure
+        header = ["Sharepoint Website", "Related Datasets"]
+        data = [header]
+        
+        # Getting unique sharepoint list URLs
+        sharepoint_datasource = [d for d in json_data if d["DataSourceType"] == "SharePointList"]
+        unique_sharepoint_websites = {sharepoint_url_pruning(d["ConnectionDetails"]["Url"]) for d in sharepoint_datasource}
+        # A set is created above, removing double values
+        unique_sharepoint_websites_list = list(unique_sharepoint_websites)
+        
+        # Getting which dataset is linked to these sharepoint lists
+        related_dataset = {
+            site: ', '.join(item["DatasetName"] for item in sharepoint_datasource if site in item["ConnectionDetails"]["Url"])
+            for site in unique_sharepoint_websites
+        }
+        
+        unique_sharepoint_websites_elementlist = [[site, related_dataset[site]] for site in unique_sharepoint_websites_list]
+        final_data = data + unique_sharepoint_websites_elementlist
+        
+        data_writing_to_excel(sheet2, final_data)
+        # Create Excel table from the data range
+        table_range = sheet2.Range(sheet2.Cells(1, 1), sheet2.Cells(len(final_data), len(header)))
+        table = sheet2.ListObjects.Add(SourceType=win32.constants.xlSrcRange, Source=table_range, XlListObjectHasHeaders=win32.constants.xlYes)
+        
+        
+        
+        
+    
     def not_empty_personal_workspaces(self):
         '''
         Detects the personal workspaces which are not empty, makes a count of ressources

@@ -65,6 +65,7 @@ ExcelM = ExcelManager(res_final)
 
 ExcelM.summary_stats()
 ExcelM.datasets_and_sources()
+ExcelM.sharepoint_websites()
 ExcelM.not_empty_personal_workspaces()
 ExcelM.shared_workspaces_content()
 ExcelM.datasets_info()
