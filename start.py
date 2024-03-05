@@ -26,7 +26,7 @@ list_args = [all_args[i * n:(i + 1) * n] for i in range((len(all_args) + n - 1) 
 if not all_args: list_args = [["no arguments"]]
 
 print(list_args)
-export_bool = False
+export_by_default = False
 for arg in list_args:
     match arg[0]:
         case '--export' | "-e": # Does the script need to run the data export ?
@@ -35,7 +35,7 @@ for arg in list_args:
                 print("Invalid argument. Please enter [y]es or [n]o.")
                 pass
             else:
-                export_bool = (arg_value == "y" or arg_value == "yes")
+                export_by_default = (arg_value == "y" or arg_value == "yes")
         case "--help" | "-h":
             print("You have entered the help command, all further commands are ignored.")
             print("Here is a list of available options :")
@@ -54,7 +54,7 @@ file_path = os.path.join(script_directory, "json_extract.ps1")
 export_directory = os.path.join(script_directory, "export")
 export_path = os.path.join(script_directory, 'export.json')
 
-if export_bool: run_powershell_script(file_path)
+if export_by_default: run_powershell_script(file_path)
     
 json_data = unwrap_json(export_path)
 res_final = scan_export(json_data)
