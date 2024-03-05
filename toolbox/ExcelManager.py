@@ -1,5 +1,6 @@
 import win32com.client as win32
 import os
+from pprint import pprint
 
 from toolbox.safe_write_to_excel import safe_write_to_excel
 from toolbox.safe_write_to_excel import data_writing_to_excel
@@ -119,10 +120,6 @@ class ExcelManager:
         # Create Excel table from the data range
         table_range = sheet2.Range(sheet2.Cells(1, 1), sheet2.Cells(len(final_data), len(header)))
         table = sheet2.ListObjects.Add(SourceType=win32.constants.xlSrcRange, Source=table_range, XlListObjectHasHeaders=win32.constants.xlYes)
-        
-        
-        
-        
     
     def not_empty_personal_workspaces(self):
         '''
@@ -188,6 +185,9 @@ class ExcelManager:
         # Iterate through each shared workspace
         for workspace in self.export_data["search"]["SharedWorkspace"].values():
             safe_write_to_excel(sheet4, current_row, 1, workspace["workspaceName"])
+            current_row += 1
+            is_premium = "Premium capacity : " + workspace["workspacePrem"]
+            safe_write_to_excel(sheet4, current_row, 1, is_premium)
             current_row += 1
 
             # Headers for the users' list

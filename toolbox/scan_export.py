@@ -12,10 +12,17 @@ def scan_export(json_data):
     for t in range(len(json_data)):
         workspaceId = str(json_data[t]["Id"])
         workspaceName = str(json_data[t]["Name"])
+        workspacePrem = str(json_data[t]["IsOnDedicatedCapacity"])
         type_espace = "PersonalWorkspace" if is_personal_workspace(workspaceName) else "SharedWorkspace"
         
-        res_final["workspaces"][type_espace][workspaceId] = {'workspaceName': workspaceName}
-        res_final["search"][type_espace][workspaceId] = {'workspaceName': workspaceName}
+        res_final["workspaces"][type_espace][workspaceId] = {
+            'workspaceName': workspaceName, 
+            'workspacePrem': workspacePrem
+            }
+        res_final["search"][type_espace][workspaceId] = {
+            'workspaceName': workspaceName, 
+            'workspacePrem': workspacePrem
+            }
 
         # Set data for browsing
         keys = ["Reports", "Dashboards", "Datasets", "Users", "Dataflows"]
