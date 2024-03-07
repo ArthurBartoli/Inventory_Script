@@ -7,8 +7,8 @@ __pycache__/
 *.so
 
 # Exports
-export/
-json_export/
+# export/
+# json_export/
 export.json
 DatasourceAndGateway.json
 */*.xlsx
