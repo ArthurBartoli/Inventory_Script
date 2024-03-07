@@ -168,3 +168,146 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+PBI Inventory/obj/project.nuget.cache
+PBI Inventory/obj/project.assets.json
+PBI Inventory/obj/PBI Inventory.csproj.nuget.g.targets
+PBI Inventory/obj/PBI Inventory.csproj.nuget.g.props
+PBI Inventory/obj/PBI Inventory.csproj.nuget.dgspec.json
+PBI Inventory/obj/Debug/net8.0/refint/PBI Inventory.dll
+PBI Inventory/obj/Debug/net8.0/ref/PBI Inventory.dll
+PBI Inventory/obj/Debug/net8.0/PBI Inventory.sourcelink.json
+PBI Inventory/obj/Debug/net8.0/PBI Inventory.pdb
+PBI Inventory/obj/Debug/net8.0/PBI Inventory.genruntimeconfig.cache
+PBI Inventory/obj/Debug/net8.0/PBI Inventory.GeneratedMSBuildEditorConfig.editorconfig
+PBI Inventory/obj/Debug/net8.0/PBI Inventory.dll
+PBI Inventory/obj/Debug/net8.0/PBI Inventory.csproj.FileListAbsolute.txt
+PBI Inventory/obj/Debug/net8.0/PBI Inventory.csproj.CoreCompileInputs.cache
+PBI Inventory/obj/Debug/net8.0/PBI Inventory.csproj.CopyComplete
+PBI Inventory/obj/Debug/net8.0/PBI Inventory.csproj.BuildWithSkipAnalyzers
+PBI Inventory/obj/Debug/net8.0/PBI Inventory.csproj.AssemblyReference.cache
+PBI Inventory/obj/Debug/net8.0/PBI Inventory.assets.cache
+PBI Inventory/obj/Debug/net8.0/PBI Inventory.AssemblyInfoInputs.cache
+PBI Inventory/obj/Debug/net8.0/PBI Inventory.AssemblyInfo.cs
+PBI Inventory/obj/Debug/net8.0/Avalonia/Resources.Inputs.cache
+PBI Inventory/obj/Debug/net8.0/Avalonia/resources
+PBI Inventory/obj/Debug/net8.0/Avalonia/references
+PBI Inventory/obj/Debug/net8.0/Avalonia/original.ref.dll
+PBI Inventory/obj/Debug/net8.0/Avalonia/original.pdb
+PBI Inventory/obj/Debug/net8.0/Avalonia/original.dll
+PBI Inventory/obj/Debug/net8.0/apphost.exe
+PBI Inventory/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+PBI Inventory/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.resources.dll
+PBI Inventory/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll
+PBI Inventory/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.resources.dll
+PBI Inventory/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll
+PBI Inventory/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.resources.dll
+PBI Inventory/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.CSharp.resources.dll
+PBI Inventory/bin/Debug/net8.0/Tmds.DBus.Protocol.dll
+PBI Inventory/bin/Debug/net8.0/System.IO.Pipelines.dll
+PBI Inventory/bin/Debug/net8.0/System.Drawing.Common.dll
+PBI Inventory/bin/Debug/net8.0/SkiaSharp.dll
+PBI Inventory/bin/Debug/net8.0/runtimes/win-x86/native/libSkiaSharp.dll
+PBI Inventory/bin/Debug/net8.0/runtimes/win-x86/native/libHarfBuzzSharp.dll
+PBI Inventory/bin/Debug/net8.0/runtimes/win-x86/native/av_libglesv2.dll
+PBI Inventory/bin/Debug/net8.0/runtimes/win-x64/native/libSkiaSharp.dll
+PBI Inventory/bin/Debug/net8.0/runtimes/win-x64/native/libHarfBuzzSharp.dll
+PBI Inventory/bin/Debug/net8.0/runtimes/win-x64/native/av_libglesv2.dll
+PBI Inventory/bin/Debug/net8.0/runtimes/win-arm64/native/libSkiaSharp.dll
+PBI Inventory/bin/Debug/net8.0/runtimes/win-arm64/native/libHarfBuzzSharp.dll
+PBI Inventory/bin/Debug/net8.0/runtimes/win-arm64/native/av_libglesv2.dll
+PBI Inventory/bin/Debug/net8.0/runtimes/osx/native/libSkiaSharp.dylib
+PBI Inventory/bin/Debug/net8.0/runtimes/osx/native/libHarfBuzzSharp.dylib
+PBI Inventory/bin/Debug/net8.0/runtimes/osx/native/libAvaloniaNative.dylib
+PBI Inventory/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.resources.dll
+PBI Inventory/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.CSharp.resources.dll
+PBI Inventory/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.resources.dll
+PBI Inventory/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll
+PBI Inventory/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.resources.dll
+PBI Inventory/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.CSharp.resources.dll
+PBI Inventory/bin/Debug/net8.0/PBI Inventory.runtimeconfig.json
+PBI Inventory/bin/Debug/net8.0/PBI Inventory.pdb
+PBI Inventory/bin/Debug/net8.0/PBI Inventory.exe
+PBI Inventory/bin/Debug/net8.0/PBI Inventory.dll
+PBI Inventory/bin/Debug/net8.0/PBI Inventory.deps.json
+PBI Inventory/bin/Debug/net8.0/Microsoft.Win32.SystemEvents.dll
+PBI Inventory/bin/Debug/net8.0/Microsoft.CodeAnalysis.Scripting.dll
+PBI Inventory/bin/Debug/net8.0/Microsoft.CodeAnalysis.dll
+PBI Inventory/bin/Debug/net8.0/Microsoft.CodeAnalysis.CSharp.Scripting.dll
+PBI Inventory/bin/Debug/net8.0/Microsoft.CodeAnalysis.CSharp.dll
+PBI Inventory/bin/Debug/net8.0/MicroCom.Runtime.dll
+PBI Inventory/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.resources.dll
+PBI Inventory/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.CSharp.resources.dll
+PBI Inventory/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.resources.dll
+PBI Inventory/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.CSharp.resources.dll
+PBI Inventory/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.resources.dll
+PBI Inventory/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.CSharp.resources.dll
+PBI Inventory/bin/Debug/net8.0/HarfBuzzSharp.dll
+PBI Inventory/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.resources.dll
+PBI Inventory/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.CSharp.resources.dll
+PBI Inventory/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.resources.dll
+PBI Inventory/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.CSharp.resources.dll
+PBI Inventory/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.resources.dll
+PBI Inventory/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.CSharp.resources.dll
+PBI Inventory/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.resources.dll
+PBI Inventory/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll
+PBI Inventory/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.CSharp.resources.dll
+PBI Inventory/bin/Debug/net8.0/CommunityToolkit.Mvvm.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.X11.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.Win32.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.Themes.Simple.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.Themes.Fluent.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.Skia.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.Remote.Protocol.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.OpenGL.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.Native.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.MicroCom.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.Metal.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.Markup.Xaml.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.Markup.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.FreeDesktop.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.Fonts.Inter.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.Dialogs.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.Diagnostics.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.Desktop.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.DesignerSupport.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.Controls.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.Controls.DataGrid.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.Controls.ColorPicker.dll
+PBI Inventory/bin/Debug/net8.0/Avalonia.Base.dll
+PBI Inventory/.vs/ProjectEvaluation/pbi inventory.projects.v7.bin
+PBI Inventory/.vs/ProjectEvaluation/pbi inventory.metadata.v7.bin
+PBI Inventory/.vs/PBI Inventory/v17/.suo
+PBI Inventory/.vs/PBI Inventory/v17/.futdcache.v2
+PBI Inventory/.vs/PBI Inventory/FileContentIndex/fcd14548-e6c0-4500-b7d9-0b324f659159.vsidx
+PBI Inventory/.vs/PBI Inventory/FileContentIndex/e11e1503-5816-473e-b2ea-906954e1c4e3.vsidx
+PBI Inventory/.vs/PBI Inventory/FileContentIndex/bffb8e88-5cf4-4b7a-b9be-65071a832b3b.vsidx
+PBI Inventory/.vs/PBI Inventory/FileContentIndex/ad40f248-5163-4eb3-9173-63d7b2ed3f3a.vsidx
+PBI Inventory/.vs/PBI Inventory/FileContentIndex/6bea845d-3c72-4b05-8d00-575401e4723d.vsidx
+PBI Inventory/.vs/PBI Inventory/DesignTimeBuild/.dtbcache.v2
+/PBI Inventory/.vs
