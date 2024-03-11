@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Automation.Peers;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -47,6 +48,15 @@ namespace PBI_Inventory.Views
                 countrySelected.Text = "No country selected";
             }
 
+        }
+
+        public void onExportOptionChecked(object sender, RoutedEventArgs args)
+        {
+            if (exportOptionText.Text == "The export option is not checked") {
+                exportOptionText.Text = "The export option is checked !";
+                return;
+            }
+            exportOptionText.Text = "The export option is not checked";
         }
     }
 }    
