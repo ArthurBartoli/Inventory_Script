@@ -13,13 +13,17 @@ namespace PBI_Inventory.Views
     public partial class MainWindow : Window
 
     {
-        Dictionary<string, string> CountryInitialsDict;
-        string CountryInitials;
-        bool exportOption = false;
+        private Dictionary<string, string> CountryInitialsDict { get; set; }    
+        private string CountryInitials { get; set; }
+        private bool exportOption { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
+
+            // Initialize boolean
+            exportOption = false;
+
             // Giving country initials to autocomplete 
             string countryInitialsPath = Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\..\PBI Inventory\Assets\country_initials.csv");
             CountryInitialsDict = File.ReadLines(countryInitialsPath).Select(line => line.Split(',')).ToDictionary(line => line[0], line => line[1]);
