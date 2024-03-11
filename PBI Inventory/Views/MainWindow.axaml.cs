@@ -15,6 +15,7 @@ namespace PBI_Inventory.Views
     {
         Dictionary<string, string> CountryInitialsDict;
         string CountryInitials;
+        bool exportOption = false;
 
         public MainWindow()
         {
@@ -40,7 +41,7 @@ namespace PBI_Inventory.Views
         {
             try
             {
-                string selection = (string)args.AddedItems[0];
+                string selection = (string) args.AddedItems[0];
                 countrySelected.Text = CountryInitialsDict[selection];
                 CountryInitials = selection;
             }
@@ -49,13 +50,14 @@ namespace PBI_Inventory.Views
             }
 
         }
-
         public void onExportOptionChecked(object sender, RoutedEventArgs args)
         {
             if (exportOptionText.Text == "The export option is not checked") {
+                exportOption = true;
                 exportOptionText.Text = "The export option is checked !";
                 return;
             }
+            exportOption = false;
             exportOptionText.Text = "The export option is not checked";
         }
     }
