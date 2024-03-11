@@ -20,7 +20,8 @@
 
 	<StackPanel Margin="20" Grid.Column="0">
 		<TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-		<AutoCompleteBox x:Name="initialsAutocompleteList"/>
+		<AutoCompleteBox x:Name="initialsAutocompleteList" SelectionChanged="CountryInitialsSelection"/>
+		<TextBlock x:Name="countrySelected">No Country is selected</TextBlock>
 		<Button Click="ExportClickHandler">Export</Button>
 		<TextBlock Margin="0 10" x:Name="message">Ready to export...</TextBlock>
 	</StackPanel>

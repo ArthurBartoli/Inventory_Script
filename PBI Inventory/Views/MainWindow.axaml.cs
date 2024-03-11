@@ -1,3 +1,4 @@
+using Avalonia;
 using Avalonia.Automation.Peers;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -9,14 +10,18 @@ using Tmds.DBus.Protocol;
 namespace PBI_Inventory.Views
 {
     public partial class MainWindow : Window
+
     {
+        Dictionary<string, string> CountryInitialsDict;
+        string CountryInitials;
+
         public MainWindow()
         {
             InitializeComponent();
-            // Getting country initials
+            // Giving country initials to autocomplete 
             string countryInitialsPath = Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\..\PBI Inventory\Assets\country_initials.csv");
-            Dictionary<string, string> CountryInitials = File.ReadLines(countryInitialsPath).Select(line => line.Split(',')).ToDictionary(line => line[0], line => line[1]);
-            List<string> Countries = [.. CountryInitials.Keys];
+            CountryInitialsDict = File.ReadLines(countryInitialsPath).Select(line => line.Split(',')).ToDictionary(line => line[0], line => line[1]);
+            List<string> Countries = [.. CountryInitialsDict.Keys];
             initialsAutocompleteList.ItemsSource = Countries;
         }
 
@@ -28,6 +33,20 @@ namespace PBI_Inventory.Views
                 return;
             }
             message.Text = "Export done !";
+        }
+
+        public void CountryInitialsSelection(object sender, SelectionChangedEventArgs args)
+        {
+            try
+            {
+                string selection = (string)args.AddedItems[0];
+                countrySelected.Text = CountryInitialsDict[selection];
+                CountryInitials = selection;
+            }
+            catch (System.ArgumentOutOfRangeException) {
+                countrySelected.Text = "No country selected";
+            }
+
         }
     }
 }    
